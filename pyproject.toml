@@ -1,6 +1,7 @@
 [project]
 name = "nannyml"
-version = "0.13.0"
+version = "0.13.1"
+homepage = "https://github.com/nannyml/nannyml"
 description = "NannyML, Your library for monitoring model performance."
 authors = [{ name = "Niels Nuyttens", email = "niels@nannyml.com" }]
 requires-python = ">=3.9,<3.13"
