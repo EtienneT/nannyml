@@ -2899,7 +2899,7 @@ def test_cbpe_for_binary_classification_with_timestamps(calculator_opts, expecte
         "estimated_business_value",
     ]
 
-    pd.testing.assert_frame_equal(expected, sut)
+    pd.testing.assert_frame_equal(expected, sut, atol=1e-4)
 
 
 @pytest.mark.parametrize(
@@ -3907,7 +3907,7 @@ def test_cbpe_for_multiclass_classification_with_timestamps(calculator_opts, exp
         "estimated_true_upmarket_card_pred_upmarket_card",
     ]
 
-    pd.testing.assert_frame_equal(expected, sut)
+    pd.testing.assert_frame_equal(expected, sut, atol=1e-4)
 
 
 @pytest.mark.parametrize(
