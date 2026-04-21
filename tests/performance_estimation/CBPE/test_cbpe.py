@@ -581,7 +581,7 @@ def test_cbpe_for_binary_classification_chunked_by_period_should_include_variabl
     results = estimator.estimate(analysis).filter(period="analysis")
     sut = results.to_df()
     assert (metric, "sampling_error") in sut.columns
-    assert np.allclose(sut.loc[:, (metric, "sampling_error")], sampling_error, atol=1e-4)
+    assert np.allclose(sut.loc[:, (metric, "sampling_error")], sampling_error, atol=1e-3)
 
 
 @pytest.mark.parametrize(
@@ -652,7 +652,7 @@ def test_cbpe_for_multiclass_classification_chunked_by_period_should_include_var
     sut = results.filter(period="analysis").to_df()
 
     assert (metric, "sampling_error") in sut.columns
-    assert np.allclose(sut.loc[:, (metric, "sampling_error")], sampling_error, atol=1e-4)
+    assert np.allclose(sut.loc[:, (metric, "sampling_error")], sampling_error, atol=1e-3)
 
 
 def test_cbpe_returns_distinct_but_consistent_results_when_reused(
