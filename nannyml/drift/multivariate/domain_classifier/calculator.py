@@ -332,7 +332,7 @@ class DomainClassifierCalculator(AbstractCalculator):
                 # Ingore lightgbm's UserWarning: Using categorical_feature in Dataset.
                 # We explicitly use that feature, don't spam the user
                 warnings.filterwarnings("ignore", message="Using categorical_feature in Dataset.")
-                model = LGBMClassifier(**self.hyperparameters)
+                model = LGBMClassifier(**(self.hyperparameters or {}))
                 model.fit(_trx, _try, categorical_feature=self.categorical_column_names)
             preds = model.predict_proba(_tsx)[:, 1]
             all_preds.append(preds)
@@ -385,7 +385,7 @@ class DomainClassifierCalculator(AbstractCalculator):
             automl.fit(
                 X,
                 y,
-                **self.hyperparameter_tuning_config,
+                **(self.hyperparameter_tuning_config or {}),
                 categorical_feature=self.categorical_column_names,
             )
             self.hyperparameters = {**automl.model.estimator.get_params()}
